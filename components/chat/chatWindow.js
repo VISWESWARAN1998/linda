@@ -56,14 +56,22 @@ const ChatWindow = () => {
       {messages.map((message) =>
         message.role === "user" ? (
           <Flex flex={1} justifyContent={"flex-end"}>
-            <Card.Root key={uuid4} style={{ width: "30%" }}>
-              <Card.Body>{message.content}</Card.Body>
+            <Card.Root key={uuid4()} style={{ width: "30%" }}>
+              <Card.Body>
+                {message.content}
+                <Text fontSize={12} textAlign={"right"} color={"#BDBDBD"}>
+                  You
+                </Text>
+              </Card.Body>
             </Card.Root>
           </Flex>
         ) : (
           <Flex flex={1}>
-            <Card.Root key={uuid4} style={{ width: "60%" }}>
+            <Card.Root key={uuid4()} style={{ width: "60%" }}>
               <Card.Body>
+                <Text fontSize={12} textAlign={"left"} color={"#BDBDBD"}>
+                  Linda
+                </Text>
                 <Markdown>{message.content}</Markdown>
               </Card.Body>
             </Card.Root>
