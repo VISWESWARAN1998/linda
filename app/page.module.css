@@ -1,0 +1,16 @@
+/* SWAMI KARUPPASWAMI THUNNAI */
+
+.hamburgerDrawer {
+  cursor: pointer;
+  position: absolute;
+}
+
+.chatWindow {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.chatMessage {
+  flex: 0.95;
+}
