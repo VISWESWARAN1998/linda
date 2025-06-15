@@ -9,20 +9,19 @@ import { ChatContext } from "@/app/chatContext";
 import { setHistoryToDB } from "@/db/setHistory";
 
 const ChatMessage = () => {
-
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const {chatHistory} = useContext(ChatContext);
-  const {setChatHistory} = useContext(ChatContext);
+  const { chatHistory } = useContext(ChatContext);
+  const { setChatHistory } = useContext(ChatContext);
 
   const addMessageToHistory = (messagePayload) => {
-    setChatHistory(prev => {
-    const updatedChats = prev.chats.map(chat => {
+    setChatHistory((prev) => {
+      const updatedChats = prev.chats.map((chat) => {
         if (chat.id === prev.selected) {
           return {
             ...chat,
-            messages: [...chat.messages, messagePayload] // immutably add message
+            messages: [...chat.messages, messagePayload], // immutably add message
           };
         }
         return chat;
@@ -30,30 +29,30 @@ const ChatMessage = () => {
 
       const updatedHistory = {
         ...prev,
-        chats: updatedChats
+        chats: updatedChats,
       };
 
       setHistoryToDB(updatedHistory); // update in DB
       return updatedHistory; // update React state
     });
-  }
+  };
 
   const getChatMessages = () => {
-     let history = JSON.parse(JSON.stringify(chatHistory));
-    for(let index in history.chats) {
+    let history = JSON.parse(JSON.stringify(chatHistory));
+    for (let index in history.chats) {
       let chat = history.chats[index];
-      if(chat.id === history.selected) {
+      if (chat.id === history.selected) {
         return history.chats[index].messages;
       }
     }
-  }
+  };
 
   const sendMessage = () => {
     const messageCopy = message;
     setMessage("");
     let messagePayload = {
       role: "user",
-      content: messageCopy
+      content: messageCopy,
     };
     const messages = [...getChatMessages(), messagePayload];
     addMessageToHistory(messagePayload);
@@ -61,17 +60,19 @@ const ChatMessage = () => {
     fetch("/api/ollamajs/chat", {
       method: "POST",
       headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         model: getSelectedModel(),
-        messages: messages
-      })
-    }).then(data => data.json().then(response => {
-      setLoading(false);
-      addMessageToHistory(response.response.message);
-    }))
+        messages: messages,
+      }),
+    }).then((data) =>
+      data.json().then((response) => {
+        setLoading(false);
+        addMessageToHistory(response.response.message);
+      }),
+    );
   };
 
   return (
@@ -85,7 +86,15 @@ const ChatMessage = () => {
           value={message}
         />
         <Flex justifyContent={"flex-end"}>
-          {loading ? <Spinner /> : <FaCircleArrowUp size={30} cursor={"pointer"} onClick={sendMessage} />}
+          {loading ? (
+            <Spinner />
+          ) : (
+            <FaCircleArrowUp
+              size={30}
+              cursor={"pointer"}
+              onClick={sendMessage}
+            />
+          )}
         </Flex>
       </Card.Body>
     </Card.Root>

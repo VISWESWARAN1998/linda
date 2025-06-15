@@ -22,7 +22,7 @@ export const setSelectedModelToDB = (model) => {
  * @param {*} modelList list of available ollama models.
  */
 export const initializeModel = (modelList) => {
-  if(localStorage.getItem(DB_SELECTED_MODEL) === null) {
+  if (localStorage.getItem(DB_SELECTED_MODEL) === null) {
     setSelectedModelToDB(modelList[0].model);
   }
 };

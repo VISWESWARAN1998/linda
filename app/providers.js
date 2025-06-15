@@ -13,7 +13,7 @@ export const LindaProviders = ({ children }) => {
   const [chatHistory, setChatHistory] = useState({});
 
   useEffect(() => {
-    if(!historyInitialized) {
+    if (!historyInitialized) {
       initializeChatHistory(setChatHistory);
       setHistoryInitialized(true);
     }
@@ -21,7 +21,7 @@ export const LindaProviders = ({ children }) => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ChatContext.Provider value={{chatHistory, setChatHistory}}>
+      <ChatContext.Provider value={{ chatHistory, setChatHistory }}>
         <Provider>{children}</Provider>
       </ChatContext.Provider>
     </QueryClientProvider>

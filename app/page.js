@@ -19,6 +19,7 @@ import { ModelPicker } from "@/components/model/modelpicker";
 import { InitializeModel } from "@/components/model/initializeModel";
 import { ChatWindow } from "@/components/chat/chatWindow";
 import { ChatHistory } from "@/components/chat/chatHistory";
+import { CreateChat } from "@/components/chat/createChat";
 
 export default function LindaHome() {
   const [chatHistoryOpened, setChatHistoryOpened] = useState(false);
@@ -46,9 +47,7 @@ export default function LindaHome() {
                 <ChatHistory />
               </Drawer.Body>
               <Drawer.Footer>
-                {/* <Button variant="outline">Cancel</Button>
-                <Button>Save</Button> */}
-                <Text fontSize={"xs"}>Linda AI v1.0</Text>
+                <CreateChat />
               </Drawer.Footer>
               <Drawer.CloseTrigger asChild>
                 <CloseButton size="sm" />

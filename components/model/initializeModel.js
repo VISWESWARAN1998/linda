@@ -11,10 +11,9 @@ import { memo } from "react";
 const InitializeModel = memo(() => {
   const { data: modelsList, isSuccess: modelsFetched } = listModelQuery();
 
-  if(modelsFetched && modelsList.models.length > 0) {
+  if (modelsFetched && modelsList.models.length > 0) {
     initializeModel(modelsList.models);
   }
-
 });
 
-export {InitializeModel};
+export { InitializeModel };

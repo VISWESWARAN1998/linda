@@ -20,8 +20,8 @@ const ModelPicker = () => {
   const [selectedModal, setSelectedModal] = useState(null);
 
   useEffect(() => {
-    if(selectedModal === null) {
-      setSelectedModal(getSelectedModel())
+    if (selectedModal === null) {
+      setSelectedModal(getSelectedModel());
     }
   }, [selectedModal]);
 
@@ -31,10 +31,12 @@ const ModelPicker = () => {
 
   return (
     <NativeSelect.Root>
-      <NativeSelect.Field onChange={(e) => {
-        setSelectedModal(e.target.value);
-        setSelectedModelToDB(e.target.value);
-      }}>
+      <NativeSelect.Field
+        onChange={(e) => {
+          setSelectedModal(e.target.value);
+          setSelectedModelToDB(e.target.value);
+        }}
+      >
         {modelsList.models.map((i) => (
           <option
             value={i.model}
