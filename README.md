@@ -16,7 +16,7 @@ Linda offers inbuilt support for saving your context. You can ask followup quest
 #### Unlimited models & chats
 ![](docs/switch.PNG)
 
-### Privacy friendly
+#### Privacy friendly
 Everything stays within your browser's local storage.
 
 Made with ❤️ by Visweswaran N
