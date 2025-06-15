@@ -4,6 +4,8 @@
 ## Introduction
 Linda Chat is a complete JS chat interface which has been fully integrated with Ollama. You don't need any additional setup apart from ollama model available offline with Node JS. Linda chat uses local storage in your browser to save chat information so you don't even need database.
 
+![](docs/banner.png)
+
 ## Features
 
 #### Context Aware Models
